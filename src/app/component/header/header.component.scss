@@ -1,0 +1,275 @@
+@import "../../../variables.scss";
+
+.header {
+    background-color: $color-primary-shade;
+    color: $color-light;
+    min-height: 68px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 200;
+  
+    &__item {
+      padding: 10px 20px;
+      max-width: $workspace;
+      width: 100%;
+      display: flex;
+      // justify-content: space-between;
+      align-items: center;
+      align-self: center;
+  
+      &-logo {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        grid-gap: 1rem;
+        font-weight: 2rem;
+        font-weight: 500;
+      }
+  
+      .usermenu_wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        grid-gap:1rem;
+  
+        .username {
+          @media (max-width: 536px) {
+            display: none;
+          }
+        }
+  
+        .menu-btn {
+          display: flex;
+          align-items: center;
+          grid-gap: 10px;
+          color: $color-light;
+          font-size: 30px;
+        }
+  
+        .usermenu {
+          color: $color-light;
+          background-color: $color-grey;
+          border: 1px solid $color-light;
+          width: 48px;
+          border-radius: 100px;
+          aspect-ratio: 1/1;
+          font-size: 2rem;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+  
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  }
+
+
+.user-info-wrapper {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    background-color: transparent;
+    overflow: hidden;
+    border-radius: 5px;
+    transition: all 0.3s;
+  
+    ::-webkit-scrollbar {
+      width: 0;
+    }
+  
+    .triangle {
+      width: 16px;
+      height: 16px;
+      clip-path: polygon(50% 0, 100% 100%, 0 100%);
+      background-color: $color-light;
+      position: relative;
+      align-self: flex-end;
+      right: 10px;
+      bottom: -5px;
+    }
+  
+    .user-info {
+      background-color: $color-light;
+      flex-grow: 1;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      grid-gap: 10px;
+      padding: 10px;
+      margin: 5px;
+      // overflow-y: scroll;
+  
+      .img {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        grid-gap: 2px;
+        cursor: pointer;
+  
+        span {
+          color: $color-primary;
+          font-size: 13px;
+        }
+      }
+  
+      .userbtn {
+        width: 64px;
+        height: 64px;
+        align-self: 1/1;
+        border-radius: 100px;
+        background-color: $color-primary;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: $color-light;
+        overflow: hidden;
+  
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+  
+      ul {
+        display: flex;
+        flex-direction: column;
+        color: $text-color;
+        grid-gap: 5px;
+        align-items: flex-start;
+        li {
+          display: flex;
+          align-items: center;
+          grid-gap: 5px;
+  
+          .icon {
+            color: $color-primary;
+          }
+        }
+      }
+  
+      button {
+        height: auto;
+        min-height: 36px;
+      }
+    }
+  }
+  
+  .logoutBtn {
+    margin-left: 2rem;
+    color: $color-light;
+    font-size: 3rem;
+  }
+  
+  .notification-wrapper {
+    position: relative;
+    .notification-list {
+      position: absolute;
+      top: 40px;
+      right: 0;
+      background-color: $color-light;
+      width: 300px;
+      max-height: 0;
+      overflow: hidden;
+      overflow-y: auto;
+      transition: max-height 0.3s;
+      color: $text-color;
+      display: flex;
+      flex-direction: column;
+      border-radius: 5px;
+  
+      &__item {
+        padding: 1rem;
+  
+        &:hover {
+          background-color: rgba($color-grey, 0.3);
+        }
+  
+        span {
+          @include limit-text(3);
+        }
+  
+        &:not(:last-child) {
+          border-bottom: 1px solid rgba($color-grey, 0.7);
+        }
+      }
+    }
+    .notification-list-open {
+      max-height: 350px;
+    }
+  }
+  
+
+// .header {
+//     background-color: $color-primary-shade;
+//     color:  $color-light;
+//     display: flex;
+//     // flex-direction: column;
+//     position: fixed;
+//     width: 100%;
+//     top: 0;
+//     left: 0;
+//     z-index: 200;
+
+//     &__items {
+//         display: flex;
+//         align-items: center;
+//         max-width: $workspace;
+//         width: 100%;
+//         padding: 10px;
+        
+//     }
+//         .usermenu_wrapper {
+//             display: flex;
+//             grid-gap: 1rem;
+//             margin-left: auto;
+//             align-items: center;
+        
+//             .menu-btn{
+//                 display: flex;
+//                 color: $color-light;
+//                 grid-gap: 1rem;
+//                 font-size: 30px;
+//             }
+
+//             .usermenu {
+//                 color: $color-light;
+//                 background-color: $color-grey;
+//                 border: 1px solid $color-light;
+//                 width: 48px;
+//                 border-radius: 100px;
+//                 aspect-ratio: 1/1;
+//                 font-size: 2rem;
+//                 overflow: hidden;
+//                 display: flex;
+//                 align-items: center;
+//                 justify-content: center;
+            
+//                 img {
+//                   width: 100%;
+//                   height: 100%;
+//                   object-fit: cover;
+//                 }
+//               }
+        
+//         }
+// }
+
+

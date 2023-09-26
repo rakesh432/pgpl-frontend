@@ -1,0 +1,527 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$pgpl-primary: mat.define-palette(mat.$indigo-palette);
+$pgpl-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$pgpl-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$pgpl-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $pgpl-primary,
+      accent: $pgpl-accent,
+      warn: $pgpl-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($pgpl-theme);
+
+@import "./variables.scss";
+// @import "~@angular/cdk/overlay-prebuilt.css";
+// @import "@danielmoncada/angular-datetime-picker/assets/style/picker.min.css";
+
+// @import "~@ng-select/ng-select/themes/default.theme.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  box-sizing: inherit;
+  font-size: 62.5%;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-size: 1.4rem;
+  background-color: $color-grey-2;
+  color: $text-color;
+  font-family: "Roboto", sans-serif;
+  width: inherit;
+  height: 100%;
+  margin: 0;
+  overflow-y: scroll;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $color-primary;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $color-primary;
+}
+
+.btn-clear {
+  width: unset;
+  height: unset;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+
+  &:active,
+  &:focus,
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px rgba($color-grey-2, 0.9) inset !important;
+}
+
+.input-field {
+  width: 100%;
+  background-color: $color-light;
+  border: none;
+  outline: none;
+  padding: 7px 20px;
+  // filter: drop-shadow(0 0 1px rgba($color-grey, 0.9));
+  border: 1px solid rgba($color-grey, 0.7);
+  // box-shadow: 0 0 3px rgba(135, 135, 136, 0.9);
+  border-radius: 3px;
+  width: 100%;
+  color: $text-color;
+  font-size: 1.6rem;
+  height: $input-height;
+  border-radius: 5px;
+}
+
+.ng-submitted {
+  .input-field.ng-invalid {
+    filter: unset !important;
+    box-shadow: unset !important;
+    border: 1px solid rgba($color-danger, 0.7);
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 20px;
+
+  .form__input {
+    width: 100%;
+    background-color: $color-grey-2;
+    border: none;
+    outline: none;
+    padding: 7px 20px;
+    filter: drop-shadow(0 0 1px rgba($color-grey, 0.9));
+    border-radius: 3px;
+    width: 100%;
+    color: $text-color;
+    font-size: 1.6rem;
+    height: $input-height;
+  }
+
+  .form__input-container {
+    position: relative;
+    width: 100%;
+    input,
+    select {
+      width: 100%;
+      background-color: $color-grey-2;
+      border: none;
+      outline: none;
+      padding: 7px 20px;
+      filter: drop-shadow(0 0 1px rgba($color-grey, 0.9));
+      border-radius: 3px;
+      width: 100%;
+      color: $text-color;
+      font-size: 1.6rem;
+      height: $input-height;
+    }
+
+    .form__input-icon {
+      &:first-child {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate(50%, -50%);
+        color: $color-grey;
+        z-index: 2;
+      }
+    }
+    .form__input-icon + .form__input {
+      padding-left: 30px;
+    }
+  }
+}
+
+.btn {
+  padding: 7px 20px;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  transition: all 0.3s;
+  height: 36px;
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+.btn_primary {
+  background-color: $color-primary-btn;
+  color: $color-light;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: $color-primary-shade;
+  }
+}
+
+.btn_success {
+  background-color: $color-success;
+  color: $color-light;
+}
+
+.btn_danger {
+  background-color: $color-danger;
+  color: $color-light;
+
+  &:hover {
+    background-color: $color-danger-shade;
+  }
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 99%;
+  background-position-y: 49%;
+}
+
+input,
+textarea {
+  font-size: 1.6rem;
+}
+
+button {
+  cursor: pointer;
+
+  &:disabled {
+    cursor: unset;
+  }
+}
+
+.ng-submitted {
+  input.ng-invalid,
+  select.ng-invalid {
+    box-shadow: 0 0 3px rgba($color-danger, 1);
+  }
+}
+
+.swal2-html-container {
+  font-size: 1.6rem !important;
+}
+
+.swal2-popup {
+  font-size: 16px !important;
+}
+
+.box-shadow {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.boldText {
+  font-weight: bold !important;
+}
+
+.color-primary {
+  color: $color-primary !important;
+}
+
+.color-danger {
+  color: $color-danger !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  z-index: 500;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba($color-grey, 0.7);
+}
+
+.bold-primary {
+  font-weight: 500 !important;
+  color: $color-primary-shade !important;
+}
+
+.multiselect-dropdown {
+  .dropdown-btn {
+    box-shadow: 0 0 2px rgba($color-grey, 0.7);
+    border: none !important;
+    outline: none !important;
+  }
+}
+
+.ng-submitted .ng-invalid {
+  .dropdown-btn {
+    box-shadow: none;
+  }
+}
+
+.page-heading {
+  display: flex;
+  align-items: flex-end;
+  font-size: 20px;
+  grid-gap: 10px;
+
+  .icon {
+    width: 30px;
+    height: auto;
+    fill: $color-primary;
+    color: $color-primary;
+    color: inherit;
+    display: flex;
+    align-items: flex-end;
+  }
+}
+
+.expend {
+  z-index: 104;
+  grid-row: span 2 / auto;
+  transition: all 0.5s;
+
+  @media (max-width: 768px) {
+    grid-row: unset;
+  }
+}
+
+.owl-dt-popup-container {
+  font-size: 14px;
+}
+
+.badge-circle {
+  border-radius: 100px;
+  color: $color-light;
+  padding: 5px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-primary;
+  font-size: 16px;
+  width: 42px;
+  height: 42px;
+
+  .icon {
+    fill: $color-light;
+    width: 28px;
+  }
+}
+
+.badge-rect {
+  color: $color-light;
+  padding: 5px 4px;
+  background-color: $color-primary;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 5px;
+  display: inline-block;
+  text-align: center;
+  min-width: 50px;
+}
+
+.back-btn {
+  width: 32px;
+  color: $text-color;
+  font-size: 2.5rem;
+}
+
+.no-shadow {
+  box-shadow: unset !important;
+}
+
+.padding-md {
+  padding: 10px;
+}
+
+.add-notification-select .multiselect-dropdown .dropdown-btn {
+  border: 1px solid rgba($color-grey, 0.7) !important;
+  box-shadow: unset !important;
+  padding: 8px 16px !important;
+
+  .dropdown-multiselect__caret {
+    height: 42px !important;
+  }
+}
+
+.ng-submitted {
+  .add-notification-select.ng-invalid {
+    box-shadow: unset !important;
+    filter: unset !important;
+    border-radius: 8px;
+
+    .dropdown-btn {
+      border: 1px solid rgba($color-danger, 0.7) !important;
+    }
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.pass-select {
+  width: 100%;
+  height: 100%;
+
+  .ng-select-container {
+    background-color: transparent !important;
+    border: unset !important;
+    outline: none !important;
+
+    &:hover {
+      box-shadow: unset !important;
+    }
+
+    .ng-input {
+      height: 100%;
+
+      input {
+        height: 100%;
+      }
+    }
+    .ng-arrow-wrapper {
+      display: none;
+    }
+  }
+}
+.no-wrap {
+  white-space: nowrap;
+}
+
+.ng-select.ng-select-single .ng-select-container {
+  height: 42px;
+}
+
+.home-party-select {
+  .ng-select-container {
+    height: 100% !important;
+    border-radius: 0 !important;
+    border: none !important;
+    font-size: 1.3rem !important;
+    max-width: 150px;
+
+    @media (max-width: 1000px) {
+      max-width: unset;
+      flex-grow: 1;
+    }
+  }
+
+  .ng-placeholder {
+    top: 50% !important;
+    transform: translateY(-50%);
+    padding-bottom: 0 !important;
+  }
+}
+
+.missing-vehilce-select {
+  font-size: 16px !important;
+  max-width: 300px;
+
+  .ng-select-container {
+    height: 42px;
+  }
+  .ng-placeholder {
+    top: unset !important;
+  }
+}
+
+.desktop-only {
+  display: none;
+  @media (min-width: 536px) {
+    display: inline-block;
+  }
+}
+
+.no-border {
+  border: none !important;
+  outline: none !important;
+}
+
+.custom_multi-select {
+  .ng-select-container {
+    height: 42px;
+    filter: drop-shadow(0 0 1px rgba(135, 135, 136, 0.9));
+    border: none;
+    outline: none;
+  }
+}
+
+.ng-submitted {
+  .custom_multi-select.ng-invalid {
+    .ng-select-container {
+      box-shadow: 0 0 3px #ef1e0c;
+    }
+  }
+}

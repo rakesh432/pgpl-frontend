@@ -1,0 +1,29 @@
+<header
+  class="header"
+  appComponentHeight
+  (heightChange)="headerHeightChange.emit($event)"
+>
+  <div class="header__item">
+    <div class="header__item-logo">
+      <img src="assets/images/podar-logo.jpg" alt="pgpl" width="50" />
+      <span id="main-header-text">Poddar Global Private Limited</span>
+    </div>
+    <div class="usermenu_wrapper">
+      <span>Welcome User</span>
+      <button class="btn-clear menu-btn">
+        <div class="usermenu">
+          <fa-icon [icon]="icons.user"></fa-icon>
+        </div>
+        <fa-icon [icon]="icons.bar"></fa-icon>
+      </button>
+    </div>
+    <div class="notification-wrapper">
+      <button class="btn-clear logoutBtn">
+        <fa-icon class="icon" [icon]="notificationIcon"></fa-icon>
+      </button>
+    </div>
+    <button [title]="'logout'" class="btn-clear logoutBtn">
+      <fa-icon class="icon" [icon]="logoutIcon"></fa-icon>
+    </button>
+  </div>
+</header>

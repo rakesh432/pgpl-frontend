@@ -1,0 +1,25 @@
+<app-layout>
+  <div class="material">
+    <div class="material__header">
+      <div class="material__header__item">
+        <div class="warehoue">
+          <h3 class="page-heading">
+            <svg-icon
+              class="icon"
+              src="../../../assets/images/gatepass.svg"
+            ></svg-icon>
+            <span>{{ "gatepass" }}</span>
+          </h3>
+          <ng-multiselect-dropdown
+            class="warehouse-select"
+            [placeholder]="'All Warehouse'"
+            [settings]="dropdownSettings"
+            [data]="warehouses"
+            [(ngModel)]="tempSelectedWarehouses"
+          >
+          </ng-multiselect-dropdown>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-layout>

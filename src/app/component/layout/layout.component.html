@@ -1,0 +1,12 @@
+<main class="layout">
+  <app-header (headerHeightChange)="onHeaderHeightChange($event)"></app-header>
+  <div
+    id="layout-content"
+    class="content"
+    [ngStyle]="{
+      marginTop: headerOffset,
+    }"
+  >
+    <ng-content></ng-content>
+  </div>
+</main>
