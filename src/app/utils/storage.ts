@@ -15,4 +15,24 @@ const get = async (key: string) => {
   }
 };
 
-export default { get };
+const set = async (key: string, value: string) => {
+  if (Capacitor.getPlatform() === 'web') {
+    return localStorage.setItem(key, value);
+  } else {
+    try {
+      return SecureStoragePlugin.set({ key, value });
+    } catch (error) {}
+  }
+};
+
+const del = async (key: string) => {
+  if (Capacitor.getPlatform() === 'web') {
+    return localStorage.removeItem(key);
+  } else {
+    try {
+      return SecureStoragePlugin.remove({ key });
+    } catch (error) {}
+  }
+};
+
+export default { get, set, del };

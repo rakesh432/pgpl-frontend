@@ -14,6 +14,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 import { AppService } from './services/app.service';
+import { AuthService } from './services/auth.service';
+import { LoaderComponent } from './component/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { AppService } from './services/app.service';
     LayoutComponent,
     HeaderComponent,
     ComponentHeightDirective,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,9 +34,9 @@ import { AppService } from './services/app.service';
     AngularSvgIconModule.forRoot(),
     NgMultiSelectDropDownModule.forRoot(),
     FormsModule,
-    // ReactiveFormsModule,
+    ReactiveFormsModule,
   ],
-  providers: [AppService, UserService],
+  providers: [AppService, UserService, AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
